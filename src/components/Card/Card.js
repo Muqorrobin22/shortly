@@ -67,6 +67,13 @@ const CardWrap = styled.div`
       color: #9e9aa8;
     }
   }
+
+  @media (min-width: 1440px) {
+    width: 35rem;
+    p {
+      margin-top: 3rem;
+    }
+  }
 `;
 
 export default Card;

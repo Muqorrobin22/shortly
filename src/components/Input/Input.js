@@ -36,6 +36,26 @@ const Section = styled.div`
     color: #34313d;
     border-radius: 5px;
   }
+  input:active,
+  input:focus {
+    outline: none;
+    border: none;
+  }
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    align-items: center;
+    padding: 5.2rem 6.4rem;
+    input {
+      margin-bottom: 0;
+      width: 300%;
+      margin-right: 3rem;
+      font-size: 20px;
+      line-height: 36px;
+      /* identical to box height, or 180% */
+
+      letter-spacing: 0.15px;
+    }
+  }
 `;
 
 export default InputGroup;

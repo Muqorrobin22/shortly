@@ -34,6 +34,14 @@ const FooterInfoWrap = styled.div`
     color: #ffffff;
     margin-bottom: 5rem;
   }
+
+  @media (min-width: 1440px) {
+    h1 {
+      font-size: 40px;
+      line-height: 48px;
+      letter-spacing: -1px;
+    }
+  }
 `;
 
 export default FooterInfo;

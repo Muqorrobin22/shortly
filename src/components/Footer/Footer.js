@@ -129,6 +129,39 @@ const FooterWrap = styled.footer`
       margin-bottom: 6rem;
     }
   }
+
+  @media (min-width: 1440px) {
+    display: flex;
+    flex-direction: row;
+    padding: 7.2rem 10rem;
+    align-items: flex-start;
+    .logo {
+      flex-basis: 20%;
+      margin-top: 0;
+      justify-content: center;
+      display: flex;
+    }
+    .info {
+      flex-direction: row;
+      flex-basis: 80%;
+      margin-top: 0;
+      margin-left: 15%;
+      .link {
+        margin-bottom: 0;
+        flex-basis: 25%;
+        h1,
+        p {
+          text-align: left;
+        }
+      }
+      .social {
+        flex-basis: 11%;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      }
+    }
+  }
 `;
 
 export default Footer;

@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as Menu } from "../../assets/images/menu.svg";
 import { ReactComponent as Close } from "../../assets/images/close.svg";
-import { HashLink } from "react-router-hash-link";
 import Mobile from "./Mobile";
+import { ButtonRounded } from "../Button/Button";
 
 const isActive = ({ isActive }) => {
   return {
@@ -37,16 +37,25 @@ function Navbar() {
 
       <div className="nav">
         <ul>
-          <HashLink
-            scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
-            to="/"
-          >
-            Home
-          </HashLink>
+          <li>
+            <a href="#home">Features</a>
+          </li>
+          <li>
+            <a href="#">Pricing</a>
+          </li>
+          <li>
+            <a href="#">Resources</a>
+          </li>
         </ul>
       </div>
-
-      <div className="nav"></div>
+      <div className="nav">
+        <div className="button">
+          <a href="#">Log in</a>
+          <a href="#" className="signin">
+            Sign in
+          </a>
+        </div>
+      </div>
     </NavWrap>
   );
 }
@@ -80,16 +89,62 @@ const NavWrap = styled.nav`
           padding-left: 1.7rem;
           a {
             text-decoration: none;
-            font-family: DM Sans;
+            font-family: Poppins;
             font-style: normal;
             font-weight: bold;
-            font-size: 1.2rem;
-            line-height: 20px;
-            text-align: center;
-            letter-spacing: 2.5px;
+            font-size: 15px;
+            line-height: 22px;
+            /* identical to box height */
+
+            color: #9e9aa8;
+
             text-transform: uppercase;
-            color: black;
+            transition: all 0.2s ease;
+            &:hover {
+              color: #34313d;
+            }
           }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    align-items: center;
+    padding: 0 10rem;
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      .signin {
+        margin: 0;
+        padding: 0.9rem 2.3rem;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        color: #ffffff;
+        background-color: var(--color-primary);
+        border-radius: 28px;
+      }
+      a {
+        margin: 0;
+        text-decoration: none;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 27px;
+        /* identical to box height */
+
+        text-align: center;
+        margin-right: 2rem;
+
+        color: #9e9aa8;
+        transition: all 0.2s ease;
+        &:hover {
+          color: #34313d;
         }
       }
     }
