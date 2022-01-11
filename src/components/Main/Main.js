@@ -47,7 +47,6 @@ function MainSection() {
 
   const loading = (loadingState) => {
     setLoading(loadingState);
-    console.log(loadingState);
   };
 
   let content;
