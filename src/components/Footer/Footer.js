@@ -57,10 +57,10 @@ function Footer() {
           </ul>
         </div>
         <div className="social">
-          <a href="#">
+          <a href="https://www.instagram.com/muqorrobinn__/">
             <img src={Ig} alt="instagram" />
           </a>
-          <a href="#">
+          <a href="https://twitter.com/AlMuqorrobiin__">
             <img src={Twitter} alt="Twitter" />
           </a>
         </div>

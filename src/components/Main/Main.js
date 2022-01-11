@@ -7,6 +7,7 @@ import Fully from "../../assets/images/icon-fully-customizable.svg";
 import Card from "../Card/Card";
 import Output from "../output/Output";
 import Error from "../output/Error";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const StatistikData = [
   {
@@ -28,6 +29,7 @@ const StatistikData = [
 
 function MainSection() {
   const [isShortly, setIsShortly] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
   const dataAPI = (shortlyData) => {
     if (typeof shortlyData === "string") {
@@ -43,24 +45,40 @@ function MainSection() {
     }
   };
 
+  const loading = (loadingState) => {
+    setLoading(loadingState);
+    console.log(loadingState);
+  };
+
+  let content;
+
+  if (typeof isShortly === "string") {
+    content = <Error message={isShortly} />;
+  } else {
+    content = isShortly.map((data) => (
+      <Output
+        key={data.code}
+        link={data.original_link}
+        newLink={data.short_link}
+      />
+    ));
+  }
+
+  if (isLoading) {
+    content = (
+      <div className="spinner">
+        {" "}
+        <ClipLoader loading={loading} size={80} />{" "}
+      </div>
+    );
+  }
+
   return (
     <Section role="main" id="main">
       <div className="group">
-        <InputGroup onSendData={dataAPI} />
+        <InputGroup onSendData={dataAPI} onLoading={loading} />
       </div>
-      <div className="output">
-        {typeof isShortly === "string" ? (
-          <Error message={isShortly} />
-        ) : (
-          isShortly.map((data) => (
-            <Output
-              key={data.code}
-              link={data.original_link}
-              newLink={data.short_link}
-            />
-          ))
-        )}
-      </div>
+      <div className="output">{content}</div>
       <div className="statistik" role="contentinfo">
         <h1 className="h1">Advanced Statistics</h1>
         <p className="p">
@@ -87,6 +105,10 @@ const Section = styled.section`
   padding: 0 2.4rem 8rem;
   .output {
     margin-top: 3rem;
+    .spinner {
+      display: flex;
+      justify-content: center;
+    }
   }
   .group {
     transform: translateY(-50%);

@@ -17,6 +17,7 @@ function InputGroup({ onSendData, onLoading }) {
     }
     setIsEmpty(false);
     setLoading(true);
+    onLoading(true);
     try {
       const response = await fetch(
         `https://api.shrtco.de/v2/shorten?url=${InputValue}`
@@ -29,12 +30,12 @@ function InputGroup({ onSendData, onLoading }) {
       const data = await response.json();
 
       onSendData(data.result);
-      onLoading(isLoading);
     } catch (error) {
       onSendData(error.message);
     }
 
     setLoading(false);
+    onLoading(isLoading);
   };
 
   return (

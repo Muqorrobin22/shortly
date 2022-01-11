@@ -5,13 +5,6 @@ import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as Menu } from "../../assets/images/menu.svg";
 import { ReactComponent as Close } from "../../assets/images/close.svg";
 import Mobile from "./Mobile";
-import { ButtonRounded } from "../Button/Button";
-
-const isActive = ({ isActive }) => {
-  return {
-    opacity: isActive ? "0.3" : "",
-  };
-};
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,17 +34,17 @@ function Navbar() {
             <a href="#home">Features</a>
           </li>
           <li>
-            <a href="#">Pricing</a>
+            <a href="#pricing">Pricing</a>
           </li>
           <li>
-            <a href="#">Resources</a>
+            <a href="#resources">Resources</a>
           </li>
         </ul>
       </div>
       <div className="nav">
         <div className="button">
-          <a href="#">Log in</a>
-          <a href="#" className="signin">
+          <a href="#login">Log in</a>
+          <a href="#signin" className="signin">
             Sign in
           </a>
         </div>

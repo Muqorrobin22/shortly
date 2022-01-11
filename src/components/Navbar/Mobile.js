@@ -1,13 +1,6 @@
 import React, { Fragment } from "react";
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { ButtonRounded } from "../Button/Button";
-
-const isActive = ({ isActive }) => {
-  return {
-    opacity: isActive ? "0.3" : "",
-  };
-};
 
 function Mobile() {
   return (
@@ -18,7 +11,7 @@ function Mobile() {
             <a href="#home">Features</a>
           </li>
           <li>
-            <a href="#">Pricing</a>
+            <a href="#pricing">Pricing</a>
           </li>
           <li>
             <a href="#main">Resources</a>
@@ -26,7 +19,7 @@ function Mobile() {
         </ul>
         <div className="garis"></div>
         <div className="button">
-          <a href="#">Log in</a>
+          <a href="#login">Log in</a>
           <ButtonRounded href="#"> Sign up </ButtonRounded>
         </div>
       </MenuWrap>
