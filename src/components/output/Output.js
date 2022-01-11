@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../Button/Button";
 import { useMediaQuery } from "@chakra-ui/react";
 
 function Output({ link, newLink }) {
   const [isLargerThan1440] = useMediaQuery("(min-width: 1440px)");
+  const [isCopy, setCopy] = useState(false);
+
+  const copy = async () => {
+    await navigator.clipboard.writeText(newLink);
+    setCopy(true);
+  };
 
   return (
     <OutputWrap>
       <div className="link">
-        <h1>coba</h1>
+        <h1>{link}</h1>
       </div>
       {!isLargerThan1440 ? <div className="garis"></div> : null}
       <div className="newLink">
-        <h1>newLInk</h1>
-        <Button>Copy</Button>
+        <h1>{newLink}</h1>
+        <Button onClick={copy} copied={isCopy}>
+          {" "}
+          {isCopy ? "Copied!" : "Copy"}{" "}
+        </Button>
       </div>
     </OutputWrap>
   );

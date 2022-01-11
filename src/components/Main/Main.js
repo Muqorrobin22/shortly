@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import InputGroup from "../Input/Input";
 import Brand from "../../assets/images/icon-brand-recognition.svg";
@@ -6,6 +6,7 @@ import Detailed from "../../assets/images/icon-detailed-records.svg";
 import Fully from "../../assets/images/icon-fully-customizable.svg";
 import Card from "../Card/Card";
 import Output from "../output/Output";
+import Error from "../output/Error";
 
 const StatistikData = [
   {
@@ -26,13 +27,39 @@ const StatistikData = [
 ];
 
 function MainSection() {
+  const [isShortly, setIsShortly] = useState([]);
+
+  const dataAPI = (shortlyData) => {
+    if (typeof shortlyData === "string") {
+      setIsShortly(shortlyData);
+    } else {
+      const data = {
+        ...shortlyData,
+      };
+      const result = [];
+      result.push(data);
+
+      setIsShortly(result);
+    }
+  };
+
   return (
     <Section role="main" id="main">
       <div className="group">
-        <InputGroup />
+        <InputGroup onSendData={dataAPI} />
       </div>
       <div className="output">
-        <Output />
+        {typeof isShortly === "string" ? (
+          <Error message={isShortly} />
+        ) : (
+          isShortly.map((data) => (
+            <Output
+              key={data.code}
+              link={data.original_link}
+              newLink={data.short_link}
+            />
+          ))
+        )}
       </div>
       <div className="statistik" role="contentinfo">
         <h1 className="h1">Advanced Statistics</h1>
